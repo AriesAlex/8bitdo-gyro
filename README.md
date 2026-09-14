@@ -54,6 +54,8 @@ After upgrading from v0.1.0, select each configured profile and press Save once.
 
 Hardware checks on Ultimate 3 over 2.4G in Tournament mode cover configuration readback, acknowledged writes and apply commands, and calibration. They do not validate every output mode, motion response or persistence across a receiver power cycle. The Rust Xbox GIP path and the final USB-mode transition after switching Tournament off have not yet been hardware-verified.
 
+Known limitations in the tested setup: Mouse output produces no cursor movement, and horizontal gyro response still needs investigation. The HID apply fix improves right-stick motion but is not a complete motion-quality fix.
+
 ## License
 
 MIT. The 8BitDo name identifies the supported hardware and is not a claim of endorsement.
