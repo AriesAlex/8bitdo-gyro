@@ -71,10 +71,9 @@ pub fn write_motion(
     let bytes = settings.encode()?;
     let controller = Controller::open()?;
     let mut expected = controller.read_config()?;
-    if expected[offset..offset + MOTION_SIZE] != bytes {
-        controller.write_block(offset, &bytes)?;
-        expected[offset..offset + MOTION_SIZE].copy_from_slice(&bytes);
-    }
+    // Matching staging bytes do not prove the input processor has applied them.
+    controller.write_block(offset, &bytes)?;
+    expected[offset..offset + MOTION_SIZE].copy_from_slice(&bytes);
     let actual = controller.read_config()?;
     if actual != expected {
         return Err("Save could not be verified. Refresh before making more changes.".into());

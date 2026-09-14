@@ -58,9 +58,8 @@ impl Controller {
 
     pub fn write_block(&self, offset: usize, data: &[u8]) -> Result<(), String> {
         self.request(1, 0, offset, data.len(), data)?;
-        if !self.uses_hid() {
-            self.request(6, 0, 0, 0, &[])?;
-        }
+        // Command 1 stages bytes; command 6 applies them to the input processor.
+        self.request(6, 0, 0, 0, &[])?;
         Ok(())
     }
 

@@ -117,7 +117,7 @@ async function calibrate() {
             </button>
             <button
               class="primary"
-              :disabled="!!pending || !dirty || (motion.enabled && motion.activationKey === 0)"
+              :disabled="!!pending || (motion.enabled && motion.activationKey === 0)"
               @click="save"
             >
               {{ pending === 'save' ? 'Saving…' : 'Save' }}

@@ -1,6 +1,6 @@
 [package]
 name = "eightbitdo-gyro"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Motion settings for the 8BitDo Ultimate 3 Controller for Xbox"
 license = "MIT"

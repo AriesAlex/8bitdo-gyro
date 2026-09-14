@@ -48,9 +48,11 @@ cargo run --manifest-path src-tauri/Cargo.toml --example device -- read
 
 ## Device access
 
-Configuration uses the controller's vendor HID interface in Tournament mode and Windows Xbox GIP in Xbox mode. The app writes only the requested motion block or Tournament byte, then reads back the complete configuration to detect unintended changes. It does not flash firmware or modify the official app.
+Configuration uses the controller's vendor HID interface in Tournament mode and Windows Xbox GIP in Xbox mode. The app writes only the requested motion block or Tournament byte, sends the apply command to the input processor, then reads back the complete configuration to detect unintended changes. It does not flash firmware or modify the official app.
 
-Hardware-verified on Ultimate 3 over 2.4G in Tournament mode: profile read/write, calibration, and profile persistence after controller restart. The Rust Xbox GIP path and the final USB-mode transition after switching Tournament off have not yet been hardware-verified.
+After upgrading from v0.1.0, select each configured profile and press Save once. That release staged HID settings without applying every motion parameter. Save can also reapply unchanged settings.
+
+Hardware checks on Ultimate 3 over 2.4G in Tournament mode cover configuration readback, acknowledged writes and apply commands, and calibration. They do not validate every output mode, motion response or persistence across a receiver power cycle. The Rust Xbox GIP path and the final USB-mode transition after switching Tournament off have not yet been hardware-verified.
 
 ## License
 
