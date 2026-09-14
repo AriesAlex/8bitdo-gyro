@@ -1,0 +1,66 @@
+:root {
+  font-family: 'Onest Variable', sans-serif;
+  font-size: 15px;
+  color: #eeeaf4;
+  background: #19191d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+  --text: #eeeaf4;
+  --muted: #aaa5b5;
+  --dim: #777280;
+  --accent: #c3afe8;
+  --surface: #232227;
+  --control: #302e37;
+  --line: #3a3742;
+}
+* {
+  box-sizing: border-box;
+  outline: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+body {
+  margin: 0;
+}
+button {
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 8px;
+  font-size: 14px;
+  min-height: 38px;
+  padding: 10px 21px;
+  background: var(--accent);
+  color: #292132;
+  font-weight: 600;
+  min-width: 84px;
+}
+.primary:hover:not(:disabled) {
+  background: #d1bfef;
+}
+.text-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+  min-height: 36px;
+}
+.text-button:hover:not(:disabled) {
+  color: var(--text);
+}

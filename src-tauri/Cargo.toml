@@ -1,0 +1,23 @@
+[package]
+name = "eightbitdo-gyro"
+version = "0.1.0"
+edition = "2021"
+description = "Motion settings for the 8BitDo Ultimate 3 Controller for Xbox"
+license = "MIT"
+default-run = "eightbitdo-gyro"
+
+[lib]
+name = "eightbitdo_gyro"
+crate-type = ["rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+hidapi = { version = "2.6.7", default-features = false, features = ["windows-native"] }
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_Security", "Win32_Storage_FileSystem", "Win32_System_IO", "Win32_System_Threading", "Win32_System_Diagnostics_ToolHelp"] }
