@@ -14,9 +14,13 @@ Windows desktop utility for the 8BitDo Ultimate 3 Controller for Xbox. Vue 3 + T
 
 Inspect the actual implementation and device traces before changing a protocol contract. Keep one source of truth per contract, clear layer boundaries and no speculative fallback branches. Preserve unrelated dirty work. Research artifacts and temporary backups belong outside this repository.
 
-Use `bun install --frozen-lockfile`, `bun run check`, `bun run build`, `cargo fmt --manifest-path src-tauri/Cargo.toml --check`, and `cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings`. `bun run desktop` runs the app; `bun run package` builds the Windows installer. Hardware checks use `cargo run --manifest-path src-tauri/Cargo.toml --example device -- read`; `verify-write` changes profile 1 compensation by one raw step and restores it.
+Use `bun install --frozen-lockfile`, `bun run check`, `bun run build`, `cargo fmt --manifest-path src-tauri/Cargo.toml --check`, and `cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings`. `bun run desktop` runs the app; `bun run package` builds the portable Windows executable at `src-tauri/target/release/eightbitdo-gyro.exe`. Hardware checks use `cargo run --manifest-path src-tauri/Cargo.toml --example device -- read`; `verify-write` changes profile 1 compensation by one raw step and restores it.
 
 Do not add unit tests. Use builds, type checks, browser/native UI checks and narrowly scoped hardware read/write verification. A rendered screen or an ACK alone does not prove settings persist or affect motion. Report those gaps explicitly.
+
+## Delivery
+
+After completing changes, run the relevant checks, review the full diff, commit and push to `main`, build locally with `bun run package`, and upload the resulting single portable executable to GitHub Releases as `8bitdo-gyro.exe`. Do not add GitHub Actions or any automatic CI/CD; never spend account runner minutes on builds. Do not publish installers, archives, PDBs or companion application files. Keep versions aligned in `package.json`, `src-tauri/tauri.conf.json`, `src-tauri/Cargo.toml` and the Cargo lockfile; use a new version/tag for a new published build. Verify the remote commit, release asset and its hash against the local executable. Do not publish if verification fails or include unrelated changes. Report hardware checks that remain unverified in the release notes.
 
 ## Interface
 

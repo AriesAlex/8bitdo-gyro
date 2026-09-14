@@ -13,6 +13,12 @@ Turning Tournament mode off may require restarting the controller and receiver. 
 
 This is an independent community project, not affiliated with 8BitDo. Other Ultimate controller models are not supported.
 
+## Download
+
+Get **8bitdo-gyro.exe** from [GitHub Releases](https://github.com/AriesAlex/8bitdo-gyro/releases). One portable Windows x64 executable, no installer or companion files. It uses the Microsoft WebView2 Runtime installed on the system.
+
+Releases are built locally and uploaded manually. There are no GitHub Actions or CI/CD builds.
+
 ## Development
 
 Requires Windows, Bun, Rust's MSVC toolchain, Visual Studio C++ Build Tools and WebView2.
@@ -29,6 +35,8 @@ cargo fmt --manifest-path src-tauri/Cargo.toml --check
 cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings
 bun run package
 ```
+
+The portable executable is written to `src-tauri/target/release/eightbitdo-gyro.exe`.
 
 Hardware diagnostics (the stock app must be closed):
 

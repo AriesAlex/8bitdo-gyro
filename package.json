@@ -9,7 +9,7 @@
     "check": "vue-tsc --noEmit",
     "tauri": "tauri",
     "desktop": "tauri dev",
-    "package": "tauri build"
+    "package": "tauri build --no-bundle"
   },
   "dependencies": {
     "@fontsource-variable/onest": "^5.3.1",
